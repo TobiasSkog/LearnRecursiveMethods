@@ -9,16 +9,26 @@ namespace LearnRecursiveMethods
             var stopwatch = new Stopwatch();
             var breaker = "\n-----------------------------------------------\n";
             var nextCalc = "\n===============================================\n";
+            var rng = new Random();
+            var unsortedIntArr = new int[1000];
 
-
-
-            Console.WriteLine(nextCalc);
 
             stopwatch.Start();
+            for (int i = 0; i < unsortedIntArr.Length; i++)
+            {
+                unsortedIntArr[i] = rng.Next(0, 500000);
+            }
+            MergeSort.Sort(unsortedIntArr);
+            stopwatch.Stop();
+            Console.WriteLine("\t~~ Merge Sort 1000 indexes random int array ~~");
+            Console.WriteLine($"\n\tTime spent calculating: {stopwatch.ElapsedMilliseconds}ms");
+            Console.WriteLine(nextCalc);
+
+            stopwatch.Restart();
             var a = FactorialCalculation.Factorial(4);
             stopwatch.Stop();
             Console.WriteLine("\t~~ Factorial Calculation ~~");
-            Console.WriteLine($"\t\t   !4 \n\tExpected result: 21 \n\tResult: {a} \n\tTime spent calculating: {stopwatch.ElapsedMilliseconds}m");
+            Console.WriteLine($"\t\t   !4 \n\tExpected result: 21 \n\tResult: {a} \n\tTime spent calculating: {stopwatch.ElapsedMilliseconds}ms");
 
             Console.WriteLine(breaker);
 
@@ -44,7 +54,10 @@ namespace LearnRecursiveMethods
 
             Console.WriteLine(nextCalc);
 
-
+            Console.WriteLine("\t~~ Binary search ~~");
+            stopwatch.Restart();
+            BinarySearch.Search(unsortedIntArr, 1399, 0, unsortedIntArr.Length / 2, unsortedIntArr.Length - 1);
+            stopwatch.Stop();
         }
     }
 }
