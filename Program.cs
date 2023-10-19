@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var a = FactorialCalculation.Factorial(7);
+            Console.WriteLine(a);
         }
     }
 }
