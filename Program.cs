@@ -18,6 +18,7 @@ namespace LearnRecursiveMethods
             {
                 unsortedIntArr[i] = rng.Next(0, 500000);
             }
+            unsortedIntArr[999] = 499999;
             MergeSort.Sort(unsortedIntArr);
             stopwatch.Stop();
             Console.WriteLine("\t~~ Merge Sort 1000 indexes random int array ~~");
@@ -56,8 +57,18 @@ namespace LearnRecursiveMethods
 
             Console.WriteLine("\t~~ Binary search ~~");
             stopwatch.Restart();
-            BinarySearch.Search(unsortedIntArr, 1399, 0, unsortedIntArr.Length / 2, unsortedIntArr.Length - 1);
+            var c = BinarySearch.Search(unsortedIntArr, 499999, 0, unsortedIntArr.Length / 2, unsortedIntArr.Length - 1);
+            Console.WriteLine($"\t\t   n = 18 \n\tExpected result: 999 \n\tResult: {c} \n\tTime spent calculating: {stopwatch.ElapsedMilliseconds}ms");
             stopwatch.Stop();
+
+            for (int i = 0; i < unsortedIntArr.Length; i++)
+            {
+                if (unsortedIntArr[i] == 499999)
+                {
+                    Console.WriteLine($"Found at index: {i}");
+                    break;
+                }
+            }
         }
     }
 }

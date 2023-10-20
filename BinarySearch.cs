@@ -7,7 +7,10 @@
     {
         public static int Search(int[] sortedArray, int target, int low, int mid, int high)
         {
-
+            if (sortedArray.Length <= 1)
+            {
+                return -1;
+            }
             if (target == sortedArray[low])
             {
                 return low;
@@ -21,17 +24,16 @@
                 return high;
             }
 
+
+
             if (target > sortedArray[mid])
             {
-                return Search(sortedArray, target, mid, high / 2, high);
+                return Search(sortedArray, target, mid, ((high / 2) + (mid / 2)), high);
             }
             else
             {
                 return Search(sortedArray, target, low, mid / 2, mid);
             }
-
-
-
         }
 
     }
